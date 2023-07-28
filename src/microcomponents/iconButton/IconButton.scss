@@ -1,0 +1,12 @@
+@import "../../assets/css/App.css";
+
+.icon-button {
+  padding: var(--padding);
+  border: none;
+  background-color: transparent;
+
+  svg {
+    color: var(--special-color);
+    font-size: 30px;
+  }
+}

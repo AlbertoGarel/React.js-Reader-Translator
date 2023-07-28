@@ -1,38 +1,72 @@
+@import "../css/fonts.css";
+
+:root {
+  --primary-bg-color: #e7dede;
+  --secondary-bg-color: #19191a;
+  --title-color: #292828;
+  --primary-color: #000000;
+  --secondary-color: #1d1d1d;
+  --warning-color: #dd7819;
+  --success-color: #529b52;
+  --danger-color: red;
+  --notify-color: #383864;
+  --special-color: #2a909b;
+  --header-shadow: 2px 2px 10px 7px #999696;
+  --text-shadow: 1px 1px 1px var(--primary-bg-color);
+  --border-color: #eeeeee;
+
+  --padding: 5px;
+  --border-radius: var(--padding);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  overflow-y: scroll;
+}
+
+h1 {
+  font-family: "Lumanosimo";
+}
+
+p {
+  font-family: "Cabin";
+}
+
+span {
+  font-family: "Cabin italic";
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
 .App {
-  text-align: center;
+  gap: 10px;
+  padding: 0 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bigDevice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.littleDevice {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-items: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.responsive-image {
+  display: flex;
+  height: auto;
 }
