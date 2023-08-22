@@ -3,6 +3,15 @@
 .custom-textarea {
   height: "300px";
 
+  > div {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--padding) * 2);
+  }
+
   textarea {
     padding: calc(var(--padding) * 3);
     max-width: 100%;
@@ -15,11 +24,5 @@
     &:focus-visible {
       outline: 1px solid #4da5af;
     }
-  }
-
-  p{
-    text-align: right;
-    margin: 0 20px 10px 0;
-    font-size: 13px;
   }
 }

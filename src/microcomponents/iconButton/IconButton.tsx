@@ -6,7 +6,9 @@ interface IconButtonProps {
   iconName: IconProp;
   visible: boolean;
   styles?: { [key: string]: string };
-  action: () => void;
+  action: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+  data_name: string;
+  id: string;
 }
 
 export default function IconButton({
@@ -14,9 +16,13 @@ export default function IconButton({
   visible,
   styles,
   action,
+  data_name,
+  id,
 }: IconButtonProps) {
   return (
     <button
+      data-id={data_name}
+      id={id}
       className="icon-button"
       type="button"
       onClick={action}

@@ -1,0 +1,36 @@
+@import "../../assets//css/App.css";
+
+#custom-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  svg {
+    margin-left: var(--padding);
+  }
+
+  span {
+    text-transform: capitalize;
+  }
+
+  #options-container {
+    position: absolute;
+    top: 100%;
+    background-color: var(--primary-bg-color);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) * 2);
+    left: 0;
+    right: 0;
+    box-shadow: var(--box-shadow);
+    z-index: 1;
+
+    span:hover{
+        color: var(--notify-color);
+        cursor: pointer;       
+    }
+  }
+}
