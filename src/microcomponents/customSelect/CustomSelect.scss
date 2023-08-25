@@ -11,26 +11,34 @@
 
   span {
     text-transform: capitalize;
+    text-wrap: nowrap;
   }
 
   #options-container {
     position: absolute;
     top: 100%;
     background-color: var(--primary-bg-color);
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     border-radius: var(--border-radius);
     padding: calc(var(--padding) * 2);
     left: 0;
     right: 0;
     box-shadow: var(--box-shadow);
     z-index: 1;
+    border: 1.5px solid var(--special-color);
 
-    span:hover{
-        color: var(--notify-color);
-        cursor: pointer;       
+    span:hover {
+      color: var(--notify-color);
+      cursor: pointer;
+    }
+
+    div:last-child {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+      overflow-y: scroll;
+      max-height: 50vh;
     }
   }
 }

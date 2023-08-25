@@ -3,6 +3,7 @@ import WordsCounter from "../../microcomponents/wordsCounter/WordsCounter";
 import "./CustomTextArea.scss";
 
 interface CustomTextAreaProps {
+  textAreaValue: string | undefined,
   data_name: string;
   deviceType: string;
   children: React.ReactNode;
@@ -12,7 +13,7 @@ interface CustomTextAreaProps {
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>
   ) => void;
   selectedLanguage?: string;
-  handlerValueInput: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  handlerValueInput?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 export default function CustomTextArea({
   deviceType,
@@ -22,6 +23,7 @@ export default function CustomTextArea({
   selectedLanguage,
   handlerValueInput,
   data_name,
+  textAreaValue
 }: CustomTextAreaProps) {
   return (
     <article
@@ -30,7 +32,7 @@ export default function CustomTextArea({
         width: deviceType === "desktop" ? "50%" : "95%",
       }}
     >
-      <div style={{ visibility: !readOnly ? "visible" : "hidden" }}>
+      <div>
         <CustomSelect
           handlerSelectedLanguage={handlerSelectedLanguage!}
           selectedLanguage={selectedLanguage!}
@@ -43,7 +45,8 @@ export default function CustomTextArea({
         style={{
           backgroundColor: readOnly ? `#cac5c5` : undefined,
         }}
-        onKeyDown={(e) => handlerValueInput(e)}
+        onChange={handlerValueInput ? (e) => handlerValueInput(e) : undefined}
+        defaultValue={textAreaValue ? textAreaValue : ""}
       />
       <>{children}</>
     </article>

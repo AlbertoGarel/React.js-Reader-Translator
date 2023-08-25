@@ -1,0 +1,34 @@
+#brand {
+  margin: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  h6 {
+    font-size: 40px;
+  }
+
+  #social {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+
+    svg {
+      color: var(--special-color);
+      font-size: 3em;
+    }
+    svg:hover{
+        transform: scale(1.5);
+    }
+  }
+
+  div:last-child {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect } from "react";
+import { useState, Fragment, useEffect, useTransition } from "react";
 import Header from "../components/header";
 import useClientMeasures from "../hooks/useClientMEasures";
 import "./App.scss";
@@ -14,27 +14,30 @@ import { LANGUGES_VALUES } from "../constants/const";
 import useRequest from "../hooks/useRequest";
 import usePredeterminatelanguge from "../hooks/usePredeterminateLanguage";
 import { SelectedLanguages } from "../types/types_App.d";
+import BrandComponent from "../components/brandComponent/BrandComponent";
+import ErrorComponent from "../components/errorComponent/ErrorComponent";
+import useTranslation from "../hooks/useTranslation";
 
 function App() {
   const [buttonIDText, getButtonIdText] = useState<string | undefined>(
     undefined
   );
   const [valueTextInput, getValueTextInput] = useState<string>(
-    "jugar a futbol"
+    ""
   );
   const { languagePred } = usePredeterminatelanguge();
   const [selectedLanguage, getSelectedLanguage] = useState<SelectedLanguages>({
     playTextUser: languagePred,
-    playTextTrad: LANGUGES_VALUES[41],
+    playTextTrad: LANGUGES_VALUES[40],
   });
   const translate = "Play Football";
-  const { text } = useRequest(
+  const { text, errorLanguage } = useRequest(
     valueTextInput,
     selectedLanguage,
     translate,
     buttonIDText
   ); // add traduction...
-  // 3.- create custom hooh for translate text;
+  const {textTranslate} = useTranslation(valueTextInput)
 
   const { measures, deviceType } = useClientMeasures();
   const { deviceHeight } = measures;
@@ -82,10 +85,11 @@ function App() {
     };
   }, [text]);
 
-  const handlerValueInput = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handlerValueInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     // Update state of user input.
     const textValue = e.currentTarget.value;
     getValueTextInput(textValue);
+    console.log(e.currentTarget.value)
   };
 
   const handlerSelectedLanguage = (
@@ -142,7 +146,7 @@ function App() {
     translate: [
       {
         iconName: faTrash,
-        visible: true,
+        visible: false,
         styles: {},
         action: () => alert("clicked"),
         data_name: "cleanTextTrad",
@@ -227,18 +231,22 @@ function App() {
             }
             handlerValueInput={handlerValueInput}
             data_name={"playTextUser"}
+            textAreaValue={valueTextInput}
           />
           <CustomTextArea
             deviceType={deviceType}
             children={<Nav2 />}
-            readOnly={false}
+            readOnly={true}
             handlerSelectedLanguage={handlerSelectedLanguage}
             selectedLanguage={selectedLanguage!.playTextTrad!.textLang}
-            handlerValueInput={handlerValueInput}
+            // handlerValueInput={handlerValueInput}
             data_name={"playTextTrad"}
+            textAreaValue={textTranslate}
           />
         </section>
+        <BrandComponent />
       </>
+      {errorLanguage && <ErrorComponent />}
     </>
   );
 }

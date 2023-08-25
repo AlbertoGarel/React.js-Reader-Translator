@@ -1,0 +1,13 @@
+#error-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    // border: 2px solid var(--special-color);
+    margin: 30px;
+    font-size: 2.1rem;
+    padding: 20px;
+    background-color: var(--danger-color);
+    color: var(--primary-bg-color);
+    box-shadow: var(--big-box-shadow);
+    border-radius: var(--border-radius);
+}

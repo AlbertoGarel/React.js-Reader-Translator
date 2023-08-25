@@ -6,10 +6,10 @@ export interface Languages_Value_Types {
 export const URL_TEXT_VOICES: string = "https://api.voicerss.org/"
 
 export const LANGUGES_VALUES: Languages_Value_Types[] = [
-  {
-    value: "Autodetect",
-    textLang: "Autodetect",
-  },
+  // {
+  //   value: "Autodetect",
+  //   textLang: "Autodetect",
+  // },
   {
     value: "af-ZA",
     textLang: "Afrikaans",

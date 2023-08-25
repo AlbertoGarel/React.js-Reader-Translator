@@ -10,6 +10,7 @@ export default function useRequest(
 ) {
   const [text, getText] = useState<Blob | undefined>();
   const [isEnded, setISEnded] = useState<boolean>(true);
+  const [errorLanguage, setErrorLanguage] = useState<boolean>(false);
 
   useEffect(() => {
     if (!inputID || !hl.playTextUser) return;
@@ -37,22 +38,16 @@ export default function useRequest(
     fetch(url, options)
       .then((response) => response.blob()) // Get the response as a Blob
       .then((blob) => {
-        console.log("call");
-        // const audioUrl = URL.createObjectURL(blob); // Create a URL for the Blob
-        // const audio = new Audio(audioUrl);
-        getText(blob);
+        console.log("call", blob);
+        if (blob.type === "text/plain") {
+          setErrorLanguage(true);
+          setTimeout(() => setErrorLanguage(false), 4000);
+        } else {
+          getText(blob);
+        }
       })
-      //   .then((audio) => {
-      //     audio.addEventListener("canplaythrough", () => {
-      //       if (audio.readyState > 2) getText(audio);
-      //     });
-      //     // audio.addEventListener("ended", () => {
-      //     //   const f = audio.ended;
-      //     //   setISEnded(f);
-      //     // });
-      //   })
       .catch((error) => console.log(error));
   }, [hl, src, translate, inputID]);
 
-  return { text, isEnded };
+  return { text, isEnded, errorLanguage };
 }

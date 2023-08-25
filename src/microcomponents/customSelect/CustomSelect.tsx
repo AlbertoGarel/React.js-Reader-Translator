@@ -20,6 +20,7 @@ export default function CustomSelect({
 }: CustomSelectProps) {
   const { deviceType } = useClientMeasures();
   const [visible, setVisible] = useState<boolean>(false);
+  const [valueInput, setInputValue] = useState<string>("");
 
   const handlerStopPropagation = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>
@@ -27,7 +28,12 @@ export default function CustomSelect({
     e.stopPropagation();
   };
 
-  // CREAR FUNCION PARA SELECCIONAR LENGUAJES SEGÚN VALOR DE ENTRADA EN APP COMPONENT.
+  const handler_Languages =
+    valueInput.length > 0
+      ? LANGUGES_VALUES.filter((i) =>
+          new RegExp(`^${valueInput}.*`, "i").test(i.textLang)
+        )
+      : LANGUGES_VALUES;
 
   return (
     <div id="custom-select" onClick={() => setVisible(!visible)}>
@@ -37,7 +43,7 @@ export default function CustomSelect({
         <div
           id="options-container"
           style={{
-            width: deviceType === "desktop" ? "calc(200% + 10px)" : "100%",
+            width: deviceType === "desktop" ? "calc(100% + 10px)" : "100%",
           }}
         >
           <div style={{ width: "100%" }}>
@@ -54,27 +60,34 @@ export default function CustomSelect({
                 fontWeight: "bolder",
                 letterSpacing: ".8px",
               }}
+              onChange={(e) => setInputValue(e.currentTarget.value)}
               onClick={(e) => handlerStopPropagation(e)}
+              value={valueInput}
             />
           </div>
-          {LANGUGES_VALUES.map((i) => {
-            return (
-              <span
-                key={i.value}
-                data-value={i.value}
-                data-text={i.textLang}
-                data-name={data_name}
-                className={
-                  selectedLanguage === i.textLang
-                    ? "selected-language"
-                    : undefined
-                }
-                onClick={(e) => handlerSelectedLanguage(e)}
-              >
-                {i.textLang}
-              </span>
-            );
-          })}
+          <div>
+            {handler_Languages.map((i) => {
+              return (
+                <span
+                  key={i.value}
+                  data-value={i.value}
+                  data-text={i.textLang}
+                  data-name={data_name}
+                  className={
+                    selectedLanguage === i.textLang
+                      ? "selected-language"
+                      : undefined
+                  }
+                  onClick={(e) => {
+                    handlerSelectedLanguage(e);
+                    setInputValue("");
+                  }}
+                >
+                  {i.textLang}
+                </span>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
