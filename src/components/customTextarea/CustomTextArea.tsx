@@ -3,7 +3,7 @@ import WordsCounter from "../../microcomponents/wordsCounter/WordsCounter";
 import "./CustomTextArea.scss";
 
 interface CustomTextAreaProps {
-  textAreaValue: string | undefined,
+  textAreaValue: string | undefined;
   data_name: string;
   deviceType: string;
   children: React.ReactNode;
@@ -23,7 +23,7 @@ export default function CustomTextArea({
   selectedLanguage,
   handlerValueInput,
   data_name,
-  textAreaValue
+  textAreaValue,
 }: CustomTextAreaProps) {
   return (
     <article
@@ -38,7 +38,7 @@ export default function CustomTextArea({
           selectedLanguage={selectedLanguage!}
           data_name={data_name}
         />
-        <WordsCounter text={"eiryieyref"} />
+        <WordsCounter text={textAreaValue} readOnly={readOnly} />
       </div>
       <textarea
         readOnly={readOnly}
@@ -46,7 +46,8 @@ export default function CustomTextArea({
           backgroundColor: readOnly ? `#cac5c5` : undefined,
         }}
         onChange={handlerValueInput ? (e) => handlerValueInput(e) : undefined}
-        defaultValue={textAreaValue ? textAreaValue : ""}
+        value={textAreaValue}
+        maxLength={200}
       />
       <>{children}</>
     </article>

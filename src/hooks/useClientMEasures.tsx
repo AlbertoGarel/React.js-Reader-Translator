@@ -27,14 +27,14 @@ export default function useClientMeasures() {
         devicewidth <= Breakpoints.Tablet
       ) {
         deviceType = "tablet";
-      }
-      else{
-        deviceType = "desktop"
+      } else {
+        deviceType = "desktop";
       }
 
       setDeviceType(deviceType);
     };
 
+    styleContainer(innerWidth);
     window.addEventListener("resize", () => styleContainer(window.innerWidth));
 
     return () =>

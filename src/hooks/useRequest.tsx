@@ -5,7 +5,7 @@ import { SelectedLanguages } from "../types/types_App.d";
 export default function useRequest(
   src: string,
   hl: SelectedLanguages,
-  translate: string,
+  translate: string | undefined,
   inputID: string | undefined
 ) {
   const [text, getText] = useState<Blob | undefined>();
@@ -13,15 +13,15 @@ export default function useRequest(
   const [errorLanguage, setErrorLanguage] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!inputID || !hl.playTextUser) return;
+    if (!translate || !inputID || !hl.playTextUser) return;
 
     const textToPlay: string = inputID === "playTextUser" ? src : translate;
     const languageFlag: string =
       inputID === "playTextUser"
         ? hl!.playTextUser!.value
         : hl!.playTextTrad!.value;
-    console.log("idioma actual", textToPlay);
-    const url = `${URL_TEXT_VOICES}?key=${process.env.REACT_APP_VOICERS_API_KEY}`;
+
+    const url: string = `${URL_TEXT_VOICES}?key=${process.env.REACT_APP_VOICERS_API_KEY}`;
     const options = {
       method: "POST",
       headers: {},
@@ -38,7 +38,6 @@ export default function useRequest(
     fetch(url, options)
       .then((response) => response.blob()) // Get the response as a Blob
       .then((blob) => {
-        console.log("call", blob);
         if (blob.type === "text/plain") {
           setErrorLanguage(true);
           setTimeout(() => setErrorLanguage(false), 4000);
@@ -46,7 +45,9 @@ export default function useRequest(
           getText(blob);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (process.env.REACT_APP_NODE_ENV) console.log(error);
+      });
   }, [hl, src, translate, inputID]);
 
   return { text, isEnded, errorLanguage };

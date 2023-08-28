@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect, useTransition } from "react";
+import { useState, Fragment, useEffect } from "react";
 import Header from "../components/header";
 import useClientMeasures from "../hooks/useClientMEasures";
 import "./App.scss";
@@ -17,30 +17,44 @@ import { SelectedLanguages } from "../types/types_App.d";
 import BrandComponent from "../components/brandComponent/BrandComponent";
 import ErrorComponent from "../components/errorComponent/ErrorComponent";
 import useTranslation from "../hooks/useTranslation";
+import NotificationPill from "../components/notificationPill";
 
+const pillText: string = "Copiado";
+const errorTextTranslate: string =
+  "El texto no se puede reproducir en el idioma seleccionado.";
 function App() {
+  const [messageCopy, setMessageCopy] = useState<boolean>(false);
   const [buttonIDText, getButtonIdText] = useState<string | undefined>(
     undefined
   );
-  const [valueTextInput, getValueTextInput] = useState<string>(
-    ""
-  );
+  const [valueTextInput, getValueTextInput] = useState<string>("");
   const { languagePred } = usePredeterminatelanguge();
   const [selectedLanguage, getSelectedLanguage] = useState<SelectedLanguages>({
     playTextUser: languagePred,
-    playTextTrad: LANGUGES_VALUES[40],
+    playTextTrad: LANGUGES_VALUES[14],
   });
-  const translate = "Play Football";
+  const { textTranslate } = useTranslation(valueTextInput, selectedLanguage);
+  //translate text for button
+  const { textTranslate: translateButonText } = useTranslation(pillText, {
+    playTextUser: LANGUGES_VALUES[41],
+    playTextTrad: languagePred,
+  });
+  //translate for errorMessage
+  const { textTranslate: translateErrorText } = useTranslation(
+    errorTextTranslate,
+    {
+      playTextUser: LANGUGES_VALUES[41],
+      playTextTrad: languagePred,
+    }
+  );
   const { text, errorLanguage } = useRequest(
     valueTextInput,
     selectedLanguage,
-    translate,
+    textTranslate,
     buttonIDText
-  ); // add traduction...
-  const {textTranslate} = useTranslation(valueTextInput)
+  );
 
-  const { measures, deviceType } = useClientMeasures();
-  const { deviceHeight } = measures;
+  const { deviceType } = useClientMeasures();
   const [isEnded, setISEnded] = useState<boolean>(true);
 
   useEffect(() => {
@@ -55,10 +69,10 @@ function App() {
   useEffect(() => {
     if (!text) return;
 
-    const audioUrl = URL.createObjectURL(text!); // Create a URL for the Blob
+    const audioUrl: string = URL.createObjectURL(text!); 
     const audio = new Audio(audioUrl);
 
-    const playSound = () => {
+    const playSound: () => void = () => {
       audio
         .play()
         .then(() => {
@@ -70,7 +84,7 @@ function App() {
         });
     };
 
-    const updateStateEnded = () => {
+    const updateStateEnded: () => void = () => {
       const endedAudio = audio.ended;
       setISEnded(endedAudio);
       getButtonIdText(undefined);
@@ -85,16 +99,38 @@ function App() {
     };
   }, [text]);
 
-  const handlerValueInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const deleteText: () => void = () => {
+    getValueTextInput("");
+  };
+
+  const clipText: (e: React.MouseEvent<HTMLButtonElement>) => void = (e) => {
+    e.preventDefault();
+    const idButton = e.currentTarget.dataset.id;
+    const element: HTMLElement | null = document.getElementById(idButton!);
+
+    if (idButton === "playTextUser") {
+      navigator.clipboard.writeText(valueTextInput ? valueTextInput : "");
+      let elemen = document.createElement("p");
+      element?.appendChild(elemen).setAttribute("id", "estoesnuevo");
+    } else {
+      navigator.clipboard.writeText(textTranslate ? textTranslate : "");
+    }
+    setMessageCopy(true);
+    setTimeout(() => setMessageCopy(false), 1000);
+  };
+
+  const handlerValueInput: (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => void = (e) => {
     // Update state of user input.
     const textValue = e.currentTarget.value;
     getValueTextInput(textValue);
-    console.log(e.currentTarget.value)
   };
 
-  const handlerSelectedLanguage = (
+  const handlerSelectedLanguage: (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => {
+  ) => void = (e) => {
+    e.preventDefault();
     // update state of select language of two inputs.
     const { name, value, text } = e.currentTarget.dataset;
     getSelectedLanguage((prevState) => {
@@ -105,9 +141,10 @@ function App() {
     });
   };
 
-  const handlerButtonPlay = (
+  const handlerButtonPlay: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  ) => void = (e) => {
+    e.preventDefault();
     // Update id of button pressed for play text.
     getButtonIdText(e.currentTarget.id);
   };
@@ -118,7 +155,7 @@ function App() {
         iconName: faTrash,
         visible: true,
         styles: {},
-        action: () => alert("clicked"),
+        action: deleteText,
         data_name: "cleanTextUser",
         id: "cleanTextUser",
       },
@@ -138,7 +175,7 @@ function App() {
         iconName: faCopy,
         visible: true,
         styles: {},
-        action: () => alert("clicked"),
+        action: (e: React.MouseEvent<HTMLButtonElement>) => clipText(e),
         data_name: "copyTextUser",
         id: "copyTextUser",
       },
@@ -168,7 +205,7 @@ function App() {
         iconName: faCopy,
         visible: true,
         styles: {},
-        action: () => alert("clicked"),
+        action: (e: React.MouseEvent<HTMLButtonElement>) => clipText(e),
         data_name: "copyTextTrad",
         id: "copyTextTrad",
       },
@@ -207,8 +244,8 @@ function App() {
     );
   };
 
-  const Nav1 = () => handlerChildren(1);
-  const Nav2 = () => handlerChildren(2);
+  const Nav1: () => JSX.Element = () => handlerChildren(1);
+  const Nav2: () => JSX.Element = () => handlerChildren(2);
 
   return (
     <>
@@ -246,7 +283,12 @@ function App() {
         </section>
         <BrandComponent />
       </>
-      {errorLanguage && <ErrorComponent />}
+      {errorLanguage && (
+        <ErrorComponent errorText={translateErrorText || errorTextTranslate} />
+      )}
+      {messageCopy && (
+        <NotificationPill text={translateButonText || pillText} />
+      )}
     </>
   );
 }

@@ -3,615 +3,199 @@ export interface Languages_Value_Types {
   textLang: string;
 }
 
-export const URL_TEXT_VOICES: string = "https://api.voicerss.org/"
+export const URL_TEXT_VOICES: string = "https://api.voicerss.org/";
 
 export const LANGUGES_VALUES: Languages_Value_Types[] = [
-  // {
-  //   value: "Autodetect",
-  //   textLang: "Autodetect",
-  // },
   {
-    value: "af-ZA",
-    textLang: "Afrikaans",
+    value: "ar-eg",
+    textLang: "Arabic (Egypt)",
   },
   {
-    value: "sq-AL",
-    textLang: "Albanian",
+    value: "ar-sa",
+    textLang: "Arabic (Saudi Arabia)",
   },
   {
-    value: "am-ET",
-    textLang: "Amharic",
-  },
-  {
-    value: "ar-SA",
-    textLang: "Arabic",
-  },
-  {
-    value: "hy-AM",
-    textLang: "Armenian",
-  },
-  {
-    value: "az-AZ",
-    textLang: "Azerbaijani",
-  },
-  {
-    value: "bjs-BB",
-    textLang: "Bajan",
-  },
-  {
-    value: "rm-RO",
-    textLang: "Balkan Gipsy",
-  },
-  {
-    value: "eu-ES",
-    textLang: "Basque",
-  },
-  {
-    value: "bem-ZM",
-    textLang: "Bemba",
-  },
-  {
-    value: "bn-IN",
-    textLang: "Bengali",
-  },
-  {
-    value: "be-BY",
-    textLang: "Bielarus",
-  },
-  {
-    value: "bi-VU",
-    textLang: "Bislama",
-  },
-  {
-    value: "bs-BA",
-    textLang: "Bosnian",
-  },
-  {
-    value: "br-FR",
-    textLang: "Breton",
-  },
-  {
-    value: "bg-BG",
+    value: "bg-bg",
     textLang: "Bulgarian",
   },
   {
-    value: "my-MM",
-    textLang: "Burmese",
-  },
-  {
-    value: "ca-ES",
+    value: "ca-es",
     textLang: "Catalan",
   },
   {
-    value: "ceb-PH",
-    textLang: "Cebuano",
+    value: "zh-cn",
+    textLang: "Chinese (China)",
   },
   {
-    value: "ch-GU",
-    textLang: "Chamorro",
+    value: "zh-hk",
+    textLang: "Chinese (Hong Kong)",
   },
   {
-    value: "zh-CN",
-    textLang: "Chinese (Simplified)",
+    value: "zh-tw	",
+    textLang: "Chinese (Taiwan)",
   },
   {
-    value: "zh-TW",
-    textLang: "Chinese Traditional",
-  },
-  {
-    value: "zdj-KM",
-    textLang: "Comorian (Ngazidja)",
-  },
-  {
-    value: "cop-EG",
-    textLang: "Coptic",
-  },
-  {
-    value: "aig-AG",
-    textLang: "Creole English (Antigua and Barbuda)",
-  },
-  {
-    value: "bah-BS",
-    textLang: "Creole English (Bahamas)",
-  },
-  {
-    value: "gcl-GD",
-    textLang: "Creole English (Grenadian)",
-  },
-  {
-    value: "gyn-GY",
-    textLang: "Creole English (Guyanese)",
-  },
-  {
-    value: "jam-JM",
-    textLang: "Creole English (Jamaican)",
-  },
-  {
-    value: "svc-VC",
-    textLang: "Creole English (Vincentian)",
-  },
-  {
-    value: "vic-US",
-    textLang: "Creole English (Virgin Islands)",
-  },
-  {
-    value: "ht-HT",
-    textLang: "Creole French (Haitian)",
-  },
-  {
-    value: "acf-LC",
-    textLang: "Creole French (Saint Lucian)",
-  },
-  {
-    value: "crs-SC",
-    textLang: "Creole French (Seselwa)",
-  },
-  {
-    value: "pov-GW",
-    textLang: "Creole Portuguese (Upper Guinea)",
-  },
-  {
-    value: "hr-HR",
+    value: "hr-hr",
     textLang: "Croatian",
   },
   {
-    value: "cs-CZ",
+    value: "cs-cz",
     textLang: "Czech",
   },
   {
-    value: "da-DK",
+    value: "da-dk",
     textLang: "Danish",
   },
   {
-    value: "nl-NL",
-    textLang: "Dutch",
+    value: "nl-be",
+    textLang: "Dutch (Belgium)",
   },
   {
-    value: "dz-BT",
-    textLang: "Dzongkha",
+    value: "nl-nl",
+    textLang: "Dutch (Netherlands)",
   },
   {
-    value: "en-GB",
-    textLang: "English",
+    value: "en-au",
+    textLang: "English (Australia)",
   },
   {
-    value: "eo-EU",
-    textLang: "Esperanto",
+    value: "en-ca",
+    textLang: "English (Canada)",
   },
   {
-    value: "et-EE",
-    textLang: "Estonian",
+    value: "en-gb",
+    textLang: "English (Great Britain)",
   },
   {
-    value: "fn-FNG",
-    textLang: "Fanagalo",
+    value: "en-in",
+    textLang: "English (India)",
   },
   {
-    value: "fo-FO",
-    textLang: "Faroese",
+    value: "en-ie",
+    textLang: "English (Ireland)",
   },
   {
-    value: "fi-FI",
-    textLang: "Finnish",
+    value: "en-us",
+    textLang: "English (United States)",
   },
   {
-    value: "fr-FR",
-    textLang: "French",
+    value: "fr-ca",
+    textLang: "French (Canada)",
   },
   {
-    value: "gl-ES",
-    textLang: "Galician",
+    value: "fr-fr",
+    textLang: "French (France)",
   },
   {
-    value: "ka-GE",
-    textLang: "Georgian",
+    value: "fr-ch",
+    textLang: "French (Switzerland)",
   },
   {
-    value: "de-DE",
-    textLang: "German",
+    value: "de-at",
+    textLang: "German (Austria)",
   },
   {
-    value: "el-GR",
+    value: "de-de",
+    textLang: "German (Germany)",
+  },
+  {
+    value: "de-ch",
+    textLang: "German (Switzerland)",
+  },
+  {
+    value: "el-gr",
     textLang: "Greek",
   },
   {
-    value: "grc-GR",
-    textLang: "Greek (Classical)",
-  },
-  {
-    value: "gu-IN",
-    textLang: "Gujarati",
-  },
-  {
-    value: "ha-NE",
-    textLang: "Hausa",
-  },
-  {
-    value: "haw-US",
-    textLang: "Hawaiian",
-  },
-  {
-    value: "he-IL",
+    value: "he-il",
     textLang: "Hebrew",
   },
   {
-    value: "hi-IN",
+    value: "hi-in",
     textLang: "Hindi",
   },
   {
-    value: "hu-HU",
+    value: "hu-hu",
     textLang: "Hungarian",
   },
   {
-    value: "is-IS",
-    textLang: "Icelandic",
-  },
-  {
-    value: "id-ID",
+    value: "id-id",
     textLang: "Indonesian",
   },
   {
-    value: "kl-GL",
-    textLang: "Inuktitut (Greenlandic)",
-  },
-  {
-    value: "ga-IE",
-    textLang: "Irish Gaelic",
-  },
-  {
-    value: "it-IT",
+    value: "it-it",
     textLang: "Italian",
   },
   {
-    value: "ja-JP",
+    value: "ja-jp",
     textLang: "Japanese",
   },
   {
-    value: "jv-ID",
-    textLang: "Javanese",
-  },
-  {
-    value: "kea-CV",
-    textLang: "Kabuverdianu",
-  },
-  {
-    value: "kab-DZ",
-    textLang: "Kabylian",
-  },
-  {
-    value: "kn-IN",
-    textLang: "Kannada",
-  },
-  {
-    value: "kk-KZ",
-    textLang: "Kazakh",
-  },
-  {
-    value: "km-KM",
-    textLang: "Khmer",
-  },
-  {
-    value: "rw-RW",
-    textLang: "Kinyarwanda",
-  },
-  {
-    value: "rn-BI",
-    textLang: "Kirundi",
-  },
-  {
-    value: "ko-KR",
+    value: "ko-kr",
     textLang: "Korean",
   },
   {
-    value: "ku-TR",
-    textLang: "Kurdish",
-  },
-  {
-    value: "ckb-IQ",
-    textLang: "Kurdish Sorani",
-  },
-  {
-    value: "ky-KG",
-    textLang: "Kyrgyz",
-  },
-  {
-    value: "lo-LA",
-    textLang: "Lao",
-  },
-  {
-    value: "la-VA",
-    textLang: "Latin",
-  },
-  {
-    value: "lv-LV",
-    textLang: "Latvian",
-  },
-  {
-    value: "lt-LT",
-    textLang: "Lithuanian",
-  },
-  {
-    value: "lb-LU",
-    textLang: "Luxembourgish",
-  },
-  {
-    value: "mk-MK",
-    textLang: "Macedonian",
-  },
-  {
-    value: "mg-MG",
-    textLang: "Malagasy",
-  },
-  {
-    value: "ms-MY",
+    value: "ms-my",
     textLang: "Malay",
   },
   {
-    value: "dv-MV",
-    textLang: "Maldivian",
-  },
-  {
-    value: "mt-MT",
-    textLang: "Maltese",
-  },
-  {
-    value: "gv-IM",
-    textLang: "Manx Gaelic",
-  },
-  {
-    value: "mi-NZ",
-    textLang: "Maori",
-  },
-  {
-    value: "mh-MH",
-    textLang: "Marshallese",
-  },
-  {
-    value: "men-SL",
-    textLang: "Mende",
-  },
-  {
-    value: "mn-MN",
-    textLang: "Mongolian",
-  },
-  {
-    value: "mfe-MU",
-    textLang: "Morisyen",
-  },
-  {
-    value: "ne-NP",
-    textLang: "Nepali",
-  },
-  {
-    value: "niu-NU",
-    textLang: "Niuean",
-  },
-  {
-    value: "no-NO",
+    value: "nb-no",
     textLang: "Norwegian",
   },
   {
-    value: "ny-MW",
-    textLang: "Nyanja",
-  },
-  {
-    value: "ur-PK",
-    textLang: "Pakistani",
-  },
-  {
-    value: "pau-PW",
-    textLang: "Palauan",
-  },
-  {
-    value: "pa-IN",
-    textLang: "Panjabi",
-  },
-  {
-    value: "pap-CW",
-    textLang: "Papiamentu",
-  },
-  {
-    value: "ps-PK",
-    textLang: "Pashto",
-  },
-  {
-    value: "fa-IR",
-    textLang: "Persian",
-  },
-  {
-    value: "pis-SB",
-    textLang: "Pijin",
-  },
-  {
-    value: "pl-PL",
+    value: "pl-pl",
     textLang: "Polish",
   },
   {
-    value: "pt-PT",
-    textLang: "Portuguese",
+    value: "pt-br",
+    textLang: "Portuguese (Brazil)",
   },
   {
-    value: "pot-US",
-    textLang: "Potawatomi",
+    value: "pt-pt",
+    textLang: "Portuguese (Portugal)",
   },
   {
-    value: "qu-PE",
-    textLang: "Quechua",
-  },
-  {
-    value: "ro-RO",
+    value: "ro-ro",
     textLang: "Romanian",
   },
   {
-    value: "ru-RU",
+    value: "ru-ru",
     textLang: "Russian",
   },
   {
-    value: "sm-WS",
-    textLang: "Samoan",
-  },
-  {
-    value: "sg-CF",
-    textLang: "Sango",
-  },
-  {
-    value: "gd-GB",
-    textLang: "Scots Gaelic",
-  },
-  {
-    value: "sr-RS",
-    textLang: "Serbian",
-  },
-  {
-    value: "sn-ZW",
-    textLang: "Shona",
-  },
-  {
-    value: "si-LK",
-    textLang: "Sinhala",
-  },
-  {
-    value: "sk-SK",
+    value: "sk-sk",
     textLang: "Slovak",
   },
   {
-    value: "sl-SI",
+    value: "sl-si",
     textLang: "Slovenian",
   },
   {
-    value: "so-SO",
-    textLang: "Somali",
+    value: "es-es",
+    textLang: "Spanish (Spain)",
   },
   {
-    value: "st-ST",
-    textLang: "Sotho, Southern",
+    value: "es-mx",
+    textLang: "Spanish (Mexico)",
   },
   {
-    value: "es-ES",
-    textLang: "Spanish",
-  },
-  {
-    value: "srn-SR",
-    textLang: "Sranan Tongo",
-  },
-  {
-    value: "sw-SZ",
-    textLang: "Swahili",
-  },
-  {
-    value: "sv-SE",
+    value: "sv-se",
     textLang: "Swedish",
   },
   {
-    value: "de-CH",
-    textLang: "Swiss German",
-  },
-  {
-    value: "syc-TR",
-    textLang: "Syriac (Aramaic)",
-  },
-  {
-    value: "tl-PH",
-    textLang: "Tagalog",
-  },
-  {
-    value: "tg-TJ",
-    textLang: "Tajik",
-  },
-  {
-    value: "tmh-DZ",
-    textLang: "Tamashek (Tuareg)",
-  },
-  {
-    value: "ta-LK",
+    value: "ta-in",
     textLang: "Tamil",
   },
   {
-    value: "te-IN",
-    textLang: "Telugu",
-  },
-  {
-    value: "tet-TL",
-    textLang: "Tetum",
-  },
-  {
-    value: "th-TH",
+    value: "th-th",
     textLang: "Thai",
   },
   {
-    value: "bo-CN",
-    textLang: "Tibetan",
-  },
-  {
-    value: "ti-TI",
-    textLang: "Tigrinya",
-  },
-  {
-    value: "tpi-PG",
-    textLang: "Tok Pisin",
-  },
-  {
-    value: "tkl-TK",
-    textLang: "Tokelauan",
-  },
-  {
-    value: "to-TO",
-    textLang: "Tongan",
-  },
-  {
-    value: "tn-BW",
-    textLang: "Tswana",
-  },
-  {
-    value: "tr-TR",
+    value: "tr-tr",
     textLang: "Turkish",
   },
   {
-    value: "tk-TM",
-    textLang: "Turkmen",
-  },
-  {
-    value: "tvl-TV",
-    textLang: "Tuvaluan",
-  },
-  {
-    value: "uk-UA",
-    textLang: "Ukrainian",
-  },
-  {
-    value: "ppk-ID",
-    textLang: "Uma",
-  },
-  {
-    value: "uz-UZ",
-    textLang: "Uzbek",
-  },
-  {
-    value: "vi-VN",
+    value: "vi-vn",
     textLang: "Vietnamese",
-  },
-  {
-    value: "wls-WF",
-    textLang: "Wallisian",
-  },
-  {
-    value: "cy-GB",
-    textLang: "Welsh",
-  },
-  {
-    value: "wo-SN",
-    textLang: "Wolof",
-  },
-  {
-    value: "xh-ZA",
-    textLang: "Xhosa",
-  },
-  {
-    value: "yi-YD",
-    textLang: "Yiddish",
-  },
-  {
-    value: "zu-ZA",
-    textLang: "Zulu",
   },
 ];

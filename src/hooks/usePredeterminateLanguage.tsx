@@ -6,7 +6,7 @@ export default function usePredeterminatelanguge() {
     { value: string; textLang: string } | undefined
   >();
   useEffect(() => {
-    const language = navigator.language;
+    const language = navigator.language.toLowerCase();
     const defaultLanguagesUser = LANGUGES_VALUES.filter((i) =>
       i.value.includes(language)
     )[0];

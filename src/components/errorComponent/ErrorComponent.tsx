@@ -1,9 +1,13 @@
 import './ErrorComponent.scss';
 
-export default function ErrorComponent() {
+interface ErrorComponentProps {
+  errorText: string
+}
+
+export default function ErrorComponent({errorText}: ErrorComponentProps) {
   return (
     <div id="error-container" >
-      <span>El texto no se puede reproducir en el idioma seleccionado.(traducir en idioma predeterminado)</span>
+      <span>{errorText}</span>
     </div>
   );
 }
