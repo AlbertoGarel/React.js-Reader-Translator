@@ -1,0 +1,29 @@
+@import "../../assets/css/App.css";
+@import "../../assets/css/fonts.css";
+
+#header {
+  border-bottom: 1px solid black;
+  background-color: var(--special-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: calc( var(--padding) * 3);
+  box-shadow: var(--header-shadow);
+  margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+
+  h1 {
+    color: var(--title-color);
+    align-self: end;
+    text-shadow: var(--text-shadow);
+  }
+
+  img{
+    width: 50px;
+    margin: calc(var(--padding) * 2);
+    background-color: var(--primary-bg-color);
+    border-radius: var(--border-radius);
+  }
+}

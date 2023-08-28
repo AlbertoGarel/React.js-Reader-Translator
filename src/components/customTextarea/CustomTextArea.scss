@@ -1,0 +1,28 @@
+@import "../../assets/css/App.css";
+
+.custom-textarea {
+  height: "300px";
+
+  > div {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--padding) * 2);
+  }
+
+  textarea {
+    padding: calc(var(--padding) * 3);
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 220px;
+    max-height: 220px;
+    border: none;
+    border-radius: 10px;
+
+    &:focus-visible {
+      outline: 1px solid #4da5af;
+    }
+  }
+}

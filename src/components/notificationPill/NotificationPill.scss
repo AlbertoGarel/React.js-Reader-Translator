@@ -1,0 +1,10 @@
+#pill{
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: var(--padding);
+    background-color: white;
+    box-shadow: var(--big-box-shadow);
+    border-radius: var(--border-radius)
+}
